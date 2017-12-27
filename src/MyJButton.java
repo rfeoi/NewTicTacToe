@@ -10,7 +10,6 @@ public class MyJButton extends JButton {
         super(text);
         Font font = new Font("Arial", Font.PLAIN, 40);
         this.setFont(font);
-        this.setForeground(Color.white);
     }
 
 }
