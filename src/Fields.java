@@ -9,21 +9,22 @@ public class Fields extends JPanel {
         M = Mid     M = Mid
         D = Down    R = Right
     */
-    public JButton fieldUL;
-    public JButton fieldUM;
-    public JButton fieldUR;
-    public JButton fieldML;
-    public JButton fieldMM;
-    public JButton fieldMR;
-    public JButton fieldDL;
-    public JButton fieldDM;
-    public JButton fieldDR;
+
+    public JButton fieldUL = new JButton();
+    public JButton fieldUM = new JButton();
+    public JButton fieldUR = new JButton();
+    public JButton fieldML = new JButton();
+    public JButton fieldMM = new JButton();
+    public JButton fieldMR = new JButton();
+    public JButton fieldDL = new JButton();
+    public JButton fieldDM = new JButton();
+    public JButton fieldDR = new JButton();
     private Service service;
 
     public Fields(){
         service = new Service();
         this.setLayout(new GridLayout(3,3));
-        Image WhiteImage = new ImageIcon("src/images/White.png").getImage().getScaledInstance(350, 350, Image.SCALE_SMOOTH);
+        Image WhiteImage = new ImageIcon("src/images/White.png").getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
         fieldUL.setIcon(new ImageIcon(WhiteImage));
         fieldUM.setIcon(new ImageIcon(WhiteImage));
         fieldUR.setIcon(new ImageIcon(WhiteImage));

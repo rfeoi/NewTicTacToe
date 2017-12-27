@@ -31,13 +31,13 @@ public class Service {
         }
 
         System.out.println("ActivePlayer = " + activePlayer + " auf dem Feld: " + field);
-        setImage(field);
+       setImage(field);
 
     }
 
     public void setImage(int field){
-        Image XImage = new ImageIcon("src/images/X.png").getImage().getScaledInstance(350, 350, Image.SCALE_SMOOTH);
-        Image OImage = new ImageIcon("src/images/O.png").getImage().getScaledInstance(350, 350, Image.SCALE_SMOOTH);
-        fields.fieldUL.setIcon(new ImageIcon(XImage));
+        Image XImage = new ImageIcon("src/images/X.png").getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+        Image OImage = new ImageIcon("src/images/O.png").getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+        //fields.fieldUL.setIcon(new ImageIcon("src/images/X.png"));
     }
 }
