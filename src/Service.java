@@ -7,11 +7,12 @@ public class Service {
     private int fieldUL, fieldUM, fieldUR;
     private int fieldML, fieldMM, fieldMR;
     private int fieldDL, fieldDM, fieldDR;
+    private Fields fields;
     JFrame frame;
-    Fields fields = new Fields();
-    Service service = new Service();
+
 
     public void start() {
+        fields = new Fields();
         frame = new JFrame("TicTacToe");
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setMinimumSize(new Dimension(500,500));
@@ -30,7 +31,7 @@ public class Service {
         }
 
         System.out.println("ActivePlayer = " + activePlayer + " auf dem Feld: " + field);
-        //service.setImage(field);
+        setImage(field);
 
     }
 

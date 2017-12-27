@@ -18,9 +18,10 @@ public class Fields extends JPanel {
     public JButton fieldDL;
     public JButton fieldDM;
     public JButton fieldDR;
-    Service service = new Service();
+    private Service service;
 
     public Fields(){
+        service = new Service();
         this.setLayout(new GridLayout(3,3));
         Image WhiteImage = new ImageIcon("src/images/White.png").getImage().getScaledInstance(350, 350, Image.SCALE_SMOOTH);
         fieldUL.setIcon(new ImageIcon(WhiteImage));
