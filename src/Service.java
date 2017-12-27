@@ -1,9 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
+import java.security.PrivateKey;
 
 public class Service {
     private int activePlayer = 0;
-    private int count = 0;
+    public int count = 1;
     private int fieldUL, fieldUM, fieldUR;
     private int fieldML, fieldMM, fieldMR;
     private int fieldDL, fieldDM, fieldDR;
@@ -23,21 +24,16 @@ public class Service {
     }
 
     public void game(int field){
-        count ++;
+
         if (count%2 == 0){
             activePlayer = 2;
         } else {
             activePlayer = 1;
         }
-
+        count ++;
         System.out.println("ActivePlayer = " + activePlayer + " auf dem Feld: " + field);
-       setImage(field);
 
     }
 
-    public void setImage(int field){
-        Image XImage = new ImageIcon("src/images/X.png").getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
-        Image OImage = new ImageIcon("src/images/O.png").getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
-        //fields.fieldUL.setIcon(new ImageIcon("src/images/X.png"));
-    }
+
 }

@@ -19,12 +19,14 @@ public class Fields extends JPanel {
     public JButton fieldDL = new JButton();
     public JButton fieldDM = new JButton();
     public JButton fieldDR = new JButton();
+    Image WhiteImage = new ImageIcon("src/images/White.png").getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+    Image XImage     = new ImageIcon("src/images/X.png").getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+    Image OImage     = new ImageIcon("src/images/O.png").getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
     private Service service;
 
     public Fields(){
         service = new Service();
         this.setLayout(new GridLayout(3,3));
-        Image WhiteImage = new ImageIcon("src/images/White.png").getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
         fieldUL.setIcon(new ImageIcon(WhiteImage));
         fieldUM.setIcon(new ImageIcon(WhiteImage));
         fieldUR.setIcon(new ImageIcon(WhiteImage));
@@ -64,16 +66,115 @@ public class Fields extends JPanel {
             if (!(e.getSource() instanceof JButton)) return;
             JButton button = (JButton) e.getSource();
 
-            if (button == fieldUL) service.game(1);
-            if (button == fieldUM) service.game(2);
-            if (button == fieldUR) service.game(3);
-            if (button == fieldML) service.game(4);
-            if (button == fieldMM) service.game(5);
-            if (button == fieldMR) service.game(6);
-            if (button == fieldDL) service.game(7);
-            if (button == fieldDM) service.game(8);
-            if (button == fieldDR) service.game(9);
+            if (button == fieldUL) {
+                if (fieldUL.getIcon().equals("javax.swing.ImageIcon@2d85df5c")) {
+                setImage(1);
+                service.game(1);
+                }
+            }
+            if (button == fieldUM) {
+                setImage(2);
+                service.game(2);
+            }
+            if (button == fieldUR) {
+                setImage(3);
+                service.game(3);
+            }
+            if (button == fieldML) {
+                setImage(4);
+                service.game(4);
+            }
+            if (button == fieldMM) {
+                setImage(5);
+                service.game(5);
+            }
+            if (button == fieldMR) {
+                setImage(6);
+                service.game(6);
+            }
+            if (button == fieldDL) {
+                setImage(7);
+                service.game(7);
+            }
+            if (button == fieldDM) {
+                setImage(8);
+                service.game(8);
+            }
+            if (button == fieldDR) {
+                setImage(9);
+                service.game(9);
+            }
         }
     };
+
+    public void setImage(int field){
+
+        if (service.count%2 == 0){
+            switch (field){
+                case 1:
+                    fieldUL.setIcon(new ImageIcon(OImage));
+                    break;
+                case 2:
+                    fieldUM.setIcon(new ImageIcon(OImage));
+                    break;
+                case 3:
+                    fieldUR.setIcon(new ImageIcon(OImage));
+                    break;
+                case 4:
+                    fieldML.setIcon(new ImageIcon(OImage));
+                    break;
+                case 5:
+                    fieldMM.setIcon(new ImageIcon(OImage));
+                    break;
+                case 6:
+                    fieldMR.setIcon(new ImageIcon(OImage));
+                    break;
+                case 7:
+                    fieldDL.setIcon(new ImageIcon(OImage));
+                    break;
+                case 8:
+                    fieldDM.setIcon(new ImageIcon(OImage));
+                    break;
+                case 9:
+                    fieldDR.setIcon(new ImageIcon(OImage));
+                    break;
+                default:
+                    System.out.println("Fehler bei Spieler 2");
+            }
+        } else {
+            switch (field){
+                case 1:
+                    fieldUL.setIcon(new ImageIcon(XImage));
+                    break;
+                case 2:
+                    fieldUM.setIcon(new ImageIcon(XImage));
+                    break;
+                case 3:
+                    fieldUR.setIcon(new ImageIcon(XImage));
+                    break;
+                case 4:
+                    fieldML.setIcon(new ImageIcon(XImage));
+                    break;
+                case 5:
+                    fieldMM.setIcon(new ImageIcon(XImage));
+                    break;
+                case 6:
+                    fieldMR.setIcon(new ImageIcon(XImage));
+                    break;
+                case 7:
+                    fieldDL.setIcon(new ImageIcon(XImage));
+                    break;
+                case 8:
+                    fieldDM.setIcon(new ImageIcon(XImage));
+                    break;
+                case 9:
+                    fieldDR.setIcon(new ImageIcon(XImage));
+                    break;
+                default:
+                    System.out.println("Fehler bei Spieler 1");
+            }
+        }
+
+    }
 
 }
