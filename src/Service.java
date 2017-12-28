@@ -3,6 +3,7 @@ import java.awt.*;
 
 public class Service {
     private int activePlayer, restartInt;
+    private boolean fieldCheck;
     public int count, winner;
     private int fieldUL, fieldUM, fieldUR;
     private int fieldML, fieldMM, fieldMR;
@@ -33,6 +34,7 @@ public class Service {
         fieldDL = 0;
         fieldDM = 0;
         fieldDR = 0;
+        fieldCheck = false;
 
         fields.preStart();
         frame.setContentPane(fields);
@@ -57,20 +59,17 @@ public class Service {
         if (field == 7) fieldDL = activePlayer;
         if (field == 8) fieldDM = activePlayer;
         if (field == 9) fieldDR = activePlayer;
+        if(fieldUL != 0 && fieldUM != 0 && fieldUR != 0 && fieldML != 0 && fieldMM != 0 && fieldMR != 0 && fieldDL != 0 && fieldDM != 0 && fieldDR != 0){
+          fieldCheck = true;
+        }
 
         if (playerWin(activePlayer)) {
             winner =  activePlayer;
-            restartInt = JOptionPane.showConfirmDialog(null, "Spieler " + winner + " hat gewonnen!\n" +
-                                                                                    "Wollen Sie noch eine Runde spielen?");
-            if (restartInt == 0) {
-                System.out.println("Neustart");
-                start(); // <- Hier wirft er den Fehler auf
-            } else {
-               System.exit(0);
-            }
-
-
+            winOutput("Spieler " + winner + " hat gewonnen!\n");
+        } else if (!playerWin(1) && !playerWin(2) && fieldCheck) {
+            winOutput("Es ist unentschieden! \n");
         }
+
 
     }
 
@@ -93,6 +92,16 @@ public class Service {
             return true;
         } else {
             return false;
+        }
+    }
+    public void winOutput(String text) {
+        String newGame = "Wollen Sie noch eine Runde spielen?";
+        restartInt = JOptionPane.showConfirmDialog(null, text + newGame);
+        if (restartInt == 0) {
+            System.out.println("Neustart");
+            start(); // <- Hier wirft er den Fehler auf
+        } else {
+            System.exit(0);
         }
     }
 
