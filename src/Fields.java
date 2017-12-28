@@ -10,16 +10,16 @@ public class Fields extends JPanel {
         D = Down    R = Right
     */
 
-    public JButton fieldUL = new JButton();
-    public JButton fieldUM = new JButton();
-    public JButton fieldUR = new JButton();
-    public JButton fieldML = new JButton();
-    public JButton fieldMM = new JButton();
-    public JButton fieldMR = new JButton();
-    public JButton fieldDL = new JButton();
-    public JButton fieldDM = new JButton();
-    public JButton fieldDR = new JButton();
-    public boolean one, two, three, four, five, six, seven, eight, nine;
+     JButton fieldUL = new JButton();
+     JButton fieldUM = new JButton();
+     JButton fieldUR = new JButton();
+     JButton fieldML = new JButton();
+     JButton fieldMM = new JButton();
+     JButton fieldMR = new JButton();
+     JButton fieldDL = new JButton();
+     JButton fieldDM = new JButton();
+     JButton fieldDR = new JButton();
+     boolean one, two, three, four, five, six, seven, eight, nine;
     Image WhiteImage = new ImageIcon("src/images/White.png").getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
     Image XImage     = new ImageIcon("src/images/X.png").getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
     Image OImage     = new ImageIcon("src/images/O.png").getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);

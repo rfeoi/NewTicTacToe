@@ -1,20 +1,16 @@
 import javax.swing.*;
 import java.awt.*;
-import java.security.PrivateKey;
 
 public class Service {
-    private int activePlayer;
+    private int activePlayer, restartInt;
     public int count, winner;
     private int fieldUL, fieldUM, fieldUR;
     private int fieldML, fieldMM, fieldMR;
     private int fieldDL, fieldDM, fieldDR;
     private Fields fields;
-    private Restart restart;
     JFrame frame;
 
     public void preStart() {
-        fields = new Fields();
-        restart = new Restart();
         frame = new JFrame("TicTacToe");
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setMinimumSize(new Dimension(500,500));
@@ -24,6 +20,7 @@ public class Service {
 
 
     public void start() {
+        fields = new Fields();
         winner = 0;
         activePlayer = 0;
         count = 1;
@@ -63,9 +60,16 @@ public class Service {
 
         if (playerWin(activePlayer)) {
             winner =  activePlayer;
-            frame.setContentPane(restart);
-            frame.setVisible(false);
-            frame.setVisible(true);
+            JOptionPane.showMessageDialog(null, "Spieler " + winner + " hat gewonnen!");
+            restartInt = JOptionPane.showConfirmDialog(null, "Wollen Sie noch eine Runde spielen?");
+            if (restartInt == 0) {
+                System.out.println("Neustart");
+                start(); // <- Hier wirft er den Fehler auf
+            } else {
+               System.exit(0);
+            }
+
+
         }
 
     }
