@@ -60,8 +60,8 @@ public class Service {
 
         if (playerWin(activePlayer)) {
             winner =  activePlayer;
-            JOptionPane.showMessageDialog(null, "Spieler " + winner + " hat gewonnen!");
-            restartInt = JOptionPane.showConfirmDialog(null, "Wollen Sie noch eine Runde spielen?");
+            restartInt = JOptionPane.showConfirmDialog(null, "Spieler " + winner + " hat gewonnen!\n" +
+                                                                                    "Wollen Sie noch eine Runde spielen?");
             if (restartInt == 0) {
                 System.out.println("Neustart");
                 start(); // <- Hier wirft er den Fehler auf
