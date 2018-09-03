@@ -1,7 +1,8 @@
-package de.robmroi.ticktacktoe;
+package de.robmroi.tictactoe;
 
 import javax.swing.*;
 import java.awt.*;
+
 
 public class Service {
     private int activePlayer, restartInt;
@@ -101,7 +102,7 @@ public class Service {
         restartInt = JOptionPane.showConfirmDialog(null, text + newGame);
         if (restartInt == 0) {
             System.out.println("Neustart");
-            this.start(); // <- Hier wirft er den Fehler auf
+            start();
         } else {
             System.exit(0);
         }

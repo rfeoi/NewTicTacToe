@@ -1,10 +1,10 @@
-package de.robmroi.ticktacktoe;
+package de.robmroi.tictactoe;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import static de.robmroi.ticktacktoe.Startup.service;
+import static de.robmroi.tictactoe.Startup.service;
 
 public class Fields extends JPanel {
     /* field + Position
@@ -26,10 +26,8 @@ public class Fields extends JPanel {
     Image WhiteImage = new ImageIcon("src/images/White.png").getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
     Image XImage     = new ImageIcon("src/images/X.png").getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
     Image OImage     = new ImageIcon("src/images/O.png").getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
-    //private Service service;
 
     public void preStart(){
-        //service = new Service();
         this.setLayout(new GridLayout(3,3));
 
         this.add(fieldUL);

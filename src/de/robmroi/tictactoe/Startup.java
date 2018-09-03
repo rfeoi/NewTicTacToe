@@ -1,4 +1,4 @@
-package de.robmroi.ticktacktoe;
+package de.robmroi.tictactoe;
 
 public class Startup {
     public static Service service;

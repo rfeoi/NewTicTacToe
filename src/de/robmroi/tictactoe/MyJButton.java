@@ -1,4 +1,4 @@
-package de.robmroi.ticktacktoe;
+package de.robmroi.tictactoe;
 
 import javax.swing.*;
 import java.awt.*;
