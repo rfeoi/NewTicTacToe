@@ -6,28 +6,27 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import static de.robmroi.tictactoe.Startup.service;
 
-public class Fields extends JPanel {
+class Fields extends JPanel {
     /* field + Position
         U = Up      L = Left
         M = Mid     M = Mid
         D = Down    R = Right
     */
 
-     JButton fieldUL = new JButton();
-     JButton fieldUM = new JButton();
-     JButton fieldUR = new JButton();
-     JButton fieldML = new JButton();
-     JButton fieldMM = new JButton();
-     JButton fieldMR = new JButton();
-     JButton fieldDL = new JButton();
-     JButton fieldDM = new JButton();
-     JButton fieldDR = new JButton();
-     boolean one, two, three, four, five, six, seven, eight, nine;
-    Image WhiteImage = new ImageIcon("src/images/White.png").getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
-    Image XImage     = new ImageIcon("src/images/X.png").getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
-    Image OImage     = new ImageIcon("src/images/O.png").getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+     private JButton fieldUL = new JButton();
+     private JButton fieldUM = new JButton();
+     private JButton fieldUR = new JButton();
+     private JButton fieldML = new JButton();
+     private JButton fieldMM = new JButton();
+     private JButton fieldMR = new JButton();
+     private JButton fieldDL = new JButton();
+     private JButton fieldDM = new JButton();
+     private JButton fieldDR = new JButton();
+     private boolean one, two, three, four, five, six, seven, eight, nine;
+    private Image XImage     = new ImageIcon("src/images/X.png").getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+    private Image OImage     = new ImageIcon("src/images/O.png").getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
 
-    public void preStart(){
+    void preStart(){
         this.setLayout(new GridLayout(3,3));
 
         this.add(fieldUL);
@@ -52,16 +51,17 @@ public class Fields extends JPanel {
     }
 
 
-    public Fields(){
-        fieldUL.setIcon(new ImageIcon(WhiteImage));
-        fieldUM.setIcon(new ImageIcon(WhiteImage));
-        fieldUR.setIcon(new ImageIcon(WhiteImage));
-        fieldML.setIcon(new ImageIcon(WhiteImage));
-        fieldMM.setIcon(new ImageIcon(WhiteImage));
-        fieldMR.setIcon(new ImageIcon(WhiteImage));
-        fieldDL.setIcon(new ImageIcon(WhiteImage));
-        fieldDM.setIcon(new ImageIcon(WhiteImage));
-        fieldDR.setIcon(new ImageIcon(WhiteImage));
+    Fields(){
+        Image whiteImage = new ImageIcon("src/images/White.png").getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+        fieldUL.setIcon(new ImageIcon(whiteImage));
+        fieldUM.setIcon(new ImageIcon(whiteImage));
+        fieldUR.setIcon(new ImageIcon(whiteImage));
+        fieldML.setIcon(new ImageIcon(whiteImage));
+        fieldMM.setIcon(new ImageIcon(whiteImage));
+        fieldMR.setIcon(new ImageIcon(whiteImage));
+        fieldDL.setIcon(new ImageIcon(whiteImage));
+        fieldDM.setIcon(new ImageIcon(whiteImage));
+        fieldDR.setIcon(new ImageIcon(whiteImage));
         one = false;
         two = false;
         three = false;
@@ -73,7 +73,7 @@ public class Fields extends JPanel {
         nine = false;
     }
 
-    ActionListener actionListener = new ActionListener() {
+    private ActionListener actionListener = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
             if (!(e.getSource() instanceof JButton)) return;
@@ -118,7 +118,7 @@ public class Fields extends JPanel {
         }
     };
 
-    public void setImage(int field){
+    private void setImage(int field){
 
         if (service.count%2 == 0){
             switch (field){

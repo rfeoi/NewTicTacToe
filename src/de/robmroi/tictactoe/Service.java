@@ -4,17 +4,17 @@ import javax.swing.*;
 import java.awt.*;
 
 
-public class Service {
-    private int activePlayer, restartInt;
+class Service {
+    private int activePlayer;
     private boolean fieldCheck;
-    public int count, winner;
+    int count;
+    private int winner;
     private int fieldUL, fieldUM, fieldUR;
     private int fieldML, fieldMM, fieldMR;
     private int fieldDL, fieldDM, fieldDR;
-    private Fields fields;
-    JFrame frame;
+    private JFrame frame;
 
-    public void preStart() {
+    void preStart() {
         frame = new JFrame("TicTacToe");
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setMinimumSize(new Dimension(500,500));
@@ -23,8 +23,8 @@ public class Service {
     }
 
 
-    public void start() {
-        fields = new Fields();
+    private void start() {
+        Fields fields = new Fields();
         winner = 0;
         activePlayer = 0;
         count = 1;
@@ -45,7 +45,7 @@ public class Service {
         frame.setVisible(true);
     }
 
-    public void game(int field){
+    void game(int field){
         if (count%2 == 0){
             activePlayer = 1;
         } else {
@@ -76,7 +76,7 @@ public class Service {
 
     }
 
-    public boolean playerWin(int player){
+    private boolean playerWin(int player){
         if (fieldUL == player && fieldUM == player && fieldUR == player) {
             return true;
         } else if (fieldML == player && fieldMM == player && fieldMR == player) {
@@ -91,15 +91,11 @@ public class Service {
             return true;
         } else if (fieldUL == player && fieldMM == player && fieldDR == player) {
             return true;
-        } else if (fieldDL == player && fieldMM == player && fieldUR == player) {
-            return true;
-        } else {
-            return false;
-        }
+        } else return fieldDL == player && fieldMM == player && fieldUR == player;
     }
-    public void winOutput(String text) {
+    private void winOutput(String text) {
         String newGame = "Wollen Sie noch eine Runde spielen?";
-        restartInt = JOptionPane.showConfirmDialog(null, text + newGame);
+        int restartInt = JOptionPane.showConfirmDialog(null, text + newGame);
         if (restartInt == 0) {
             System.out.println("Neustart");
             start();
