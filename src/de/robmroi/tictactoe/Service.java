@@ -9,9 +9,7 @@ class Service {
     private boolean fieldCheck;
     int count;
     private int winner;
-    private int fieldUL, fieldUM, fieldUR;
-    private int fieldML, fieldMM, fieldMR;
-    private int fieldDL, fieldDM, fieldDR;
+    private int theFields[] = new int[9];
     private JFrame frame;
 
     void preStart() {
@@ -28,15 +26,9 @@ class Service {
         winner = 0;
         activePlayer = 0;
         count = 1;
-        fieldUL = 0;
-        fieldUM = 0;
-        fieldUR = 0;
-        fieldML = 0;
-        fieldMM = 0;
-        fieldMR = 0;
-        fieldDL = 0;
-        fieldDM = 0;
-        fieldDR = 0;
+        for (int i=0;i<3;i++) {
+                theFields[i] = 0;
+        }
         fieldCheck = false;
 
         fields.preStart();
@@ -46,6 +38,7 @@ class Service {
     }
 
     void game(int field){
+
         if (count%2 == 0){
             activePlayer = 1;
         } else {
@@ -53,19 +46,11 @@ class Service {
         }
         count ++;
         System.out.println("Spieler " + activePlayer + " ist auf dem Feld: " + field + ".");
-        if (field == 1) fieldUL = activePlayer;
-        if (field == 2) fieldUM = activePlayer;
-        if (field == 3) fieldUR = activePlayer;
-        if (field == 4) fieldML = activePlayer;
-        if (field == 5) fieldMM = activePlayer;
-        if (field == 6) fieldMR = activePlayer;
-        if (field == 7) fieldDL = activePlayer;
-        if (field == 8) fieldDM = activePlayer;
-        if (field == 9) fieldDR = activePlayer;
-        if(fieldUL != 0 && fieldUM != 0 && fieldUR != 0 && fieldML != 0 && fieldMM != 0 && fieldMR != 0 && fieldDL != 0 && fieldDM != 0 && fieldDR != 0){
-          fieldCheck = true;
+        theFields[field-1] = activePlayer;
+        fieldCheck = true;
+        for (int theField : theFields) {
+            if (theField == 0) fieldCheck = false;
         }
-
         if (playerWin(activePlayer)) {
             winner =  activePlayer;
             winOutput("Spieler " + winner + " hat gewonnen!\n");
@@ -77,21 +62,14 @@ class Service {
     }
 
     private boolean playerWin(int player){
-        if (fieldUL == player && fieldUM == player && fieldUR == player) {
-            return true;
-        } else if (fieldML == player && fieldMM == player && fieldMR == player) {
-            return true;
-        } else if (fieldDL == player && fieldDM == player && fieldDR == player) {
-            return true;
-        } else if (fieldUL == player && fieldML == player && fieldDL == player) {
-            return true;
-        } else if (fieldUM == player && fieldMM == player && fieldDM == player) {
-            return true;
-        } else if (fieldUR == player && fieldMR == player && fieldDR == player) {
-            return true;
-        } else if (fieldUL == player && fieldMM == player && fieldDR == player) {
-            return true;
-        } else return fieldDL == player && fieldMM == player && fieldUR == player;
+        if (theFields[0] == player && theFields[1] == player && theFields[2] == player) return true;
+        else if (theFields[3] == player && theFields[4] == player && theFields[5] == player) return true;
+        else if (theFields[6] == player && theFields[7] == player && theFields[8] == player) return true;
+        else if (theFields[0] == player && theFields[3] == player && theFields[6] == player) return true;
+        else if (theFields[1] == player && theFields[4] == player && theFields[7] == player) return true;
+        else if (theFields[2] == player && theFields[5] == player && theFields[8] == player) return true;
+        else if (theFields[0] == player && theFields[4] == player && theFields[8] == player) return true;
+        else return theFields[2] == player && theFields[4] == player && theFields[6] == player;
     }
     private void winOutput(String text) {
         String newGame = "Wollen Sie noch eine Runde spielen?";
