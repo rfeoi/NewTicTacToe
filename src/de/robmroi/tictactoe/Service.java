@@ -32,6 +32,7 @@ class Service {
         fieldCheck = false;
 
         fields.preStart();
+        fields.start();
         frame.setContentPane(fields);
         frame.setVisible(false);
         frame.setVisible(true);

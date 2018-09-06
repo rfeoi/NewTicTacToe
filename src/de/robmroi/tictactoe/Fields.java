@@ -14,15 +14,15 @@ class Fields extends JPanel {
     void preStart(){
         this.setLayout(new GridLayout(3,3));
 
-        for (JButton field : fields) {
-            field = new JButton();
-            this.add(field);
-            field.addActionListener(actionListener);
+        for (int i=0;i<fields.length;i++) {
+            fields[i] = new JButton();
+            this.add(fields[i]);
+            fields[i].addActionListener(actionListener);
         }
     }
 
 
-    Fields(){
+    void start(){
         Image whiteImage = new ImageIcon("src/images/White.png").getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
         for (int i=0;i<9;i++){
             fields[i].setIcon(new ImageIcon(whiteImage));
