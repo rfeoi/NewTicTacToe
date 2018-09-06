@@ -8,8 +8,8 @@ import static de.robmroi.tictactoe.Startup.service;
 class Fields extends JPanel {
      private JButton[] fields = new JButton[9];
      private boolean[] checking = new boolean[9];
-    private Image XImage     = new ImageIcon("src/images/X.png").getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
-    private Image OImage     = new ImageIcon("src/images/O.png").getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+    private Image XImage = new ImageIcon("src/images/X.png").getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+    private Image OImage = new ImageIcon("src/images/O.png").getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
 
     void preStart(){
         this.setLayout(new GridLayout(3,3));

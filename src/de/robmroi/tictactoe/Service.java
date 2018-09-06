@@ -12,6 +12,13 @@ class Service {
     private int theFields[] = new int[9];
     private JFrame frame;
 
+    /*
+    TODO
+    - center alignment
+    - size depending on screen
+    - win check fixing
+     */
+
     void preStart() {
         frame = new JFrame("TicTacToe");
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
