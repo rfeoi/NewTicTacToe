@@ -11,20 +11,31 @@ class Service {
     private int winner;
     private int theFields[] = new int[9];
     private JFrame frame;
+    private int maxWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
+    private int width;
 
     /*
     TODO
-    - center alignment
-    - size depending on screen
     - win check fixing
      */
 
     void preStart() {
-        frame = new JFrame("TicTacToe");
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setMinimumSize(new Dimension(500,500));
-        frame.setBackground(new Color(255, 255, 255));
+        setFrame();
         start();
+    }
+
+    private void setFrame(){
+        //sets the size of the field, depending on the resolution of the screen
+        double size = 40;
+        double maxWidthDouble = Math.sqrt(maxWidth);
+        double widthDouble = (maxWidthDouble / 3) * size;
+        width = (int) widthDouble;
+        //frame settings
+        frame = new JFrame("TictacToe");
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.setMinimumSize(new Dimension(width,width));
+        frame.setBackground(new Color(255, 255, 255));
+        frame.setLocationRelativeTo(null);
     }
 
 
