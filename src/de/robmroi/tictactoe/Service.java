@@ -11,45 +11,39 @@ class Service {
     private int winner;
     private int theFields[] = new int[9];
     private JFrame frame;
-    private int maxWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
-    private int width;
-
-    /*
-    TODO
-    - win check fixing
-     */
+    private int screenLength = Toolkit.getDefaultToolkit().getScreenSize().width;
+    private Fields fields = new Fields();
 
     void preStart() {
         setFrame();
+        fields.preStart();
         start();
     }
 
     private void setFrame(){
         //sets the size of the field, depending on the resolution of the screen
         double size = 40;
-        double maxWidthDouble = Math.sqrt(maxWidth);
-        double widthDouble = (maxWidthDouble / 3) * size;
-        width = (int) widthDouble;
+        double maxLengthDouble = Math.sqrt(screenLength);
+        double lengthDouble = (maxLengthDouble / 3) * size;
+        int length = (int) lengthDouble;
         //frame settings
         frame = new JFrame("TictacToe");
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setMinimumSize(new Dimension(width,width));
+        frame.setMinimumSize(new Dimension(length, length));
         frame.setBackground(new Color(255, 255, 255));
         frame.setLocationRelativeTo(null);
     }
 
 
     private void start() {
-        Fields fields = new Fields();
         winner = 0;
         activePlayer = 0;
         count = 1;
-        for (int i=0;i<3;i++) {
+        for (int i=0;i<theFields.length;i++) {
                 theFields[i] = 0;
         }
         fieldCheck = false;
 
-        fields.preStart();
         fields.start();
         frame.setContentPane(fields);
         frame.setVisible(false);
@@ -57,7 +51,6 @@ class Service {
     }
 
     void game(int field){
-
         if (count%2 == 0){
             activePlayer = 1;
         } else {
@@ -76,8 +69,6 @@ class Service {
         } else if (!playerWin(1) && !playerWin(2) && fieldCheck) {
             winOutput("Es ist unentschieden! \n");
         }
-
-
     }
 
     private boolean playerWin(int player){

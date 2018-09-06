@@ -43,7 +43,6 @@ class Fields extends JPanel {
     };
 
     private void setImage(int field){
-
         if (service.count%2 == 0) {
             fields[field-1].setIcon(new ImageIcon(OImage));
             checking[field-1] = true;
